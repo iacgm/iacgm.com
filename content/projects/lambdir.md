@@ -35,7 +35,7 @@ S x y z = x z (y z)
 
 Note that in a more mainstream language, `K x y` would be written `K(x, y)`, but here, parentheses would quickly become cumbersome. Also, this application is left-associative, so `K x y` is equivalent to `(K x) y`.
 
-Functional programmers will recognize `K` as `const`, a function which simply ignores its second argument, but `S` is a more mysterious. That `S` is short for [Verschmelzungsfunktion](https://blog.plover.com/math/combinator-s.html), meaning "fusion function", which is not particularly enlightening. Schönfinkel justified it by explaining that it could be used to implement, for example, the function \(log_(x)(1+x)\) (in Haskell, something like `S log (1+)`). This is even less enlightening. A better explanation is that it's a sort of distribution/factoring function, which we will see in action later on.
+Functional programmers will recognize `K` as `const`, a function which simply ignores its second argument, but `S` is a more mysterious. That `S` is short for [Verschmelzungsfunktion](https://blog.plover.com/math/combinator-s.html), meaning "fusion function", is not particularly enlightening. Schönfinkel justified it by explaining that it could be used to implement, for example, the function \(log_x (1+x)\) (in Haskell, something like `S log (1+)`). This is even less enlightening. A better explanation is that it's a sort of distribution/factoring function, which we will see in action later on.
 
 Since this is getting complex, let's see some examples (here, `~>` means "reduces to", and can be thought of as `=`):
 
@@ -106,7 +106,7 @@ Lambdir supports:
 1. 32-bit signed integers (and integer literals),
 2. `+`: which adds two integers (multiplication & subtraction can be implemented in terms of this)
 3. `=`: which reduces to `KI` (or `λfx.x`) if fed 2 equal integers, and `K` (or `λfx.f`) if fed 2 unequal integers
-4. Applying arguments to numbers, in the same way we would in the Lambda Calculus. This has the caveat that we'll have several ways of representing the same combinator, which may behave differently: for example, for any `f` & `x`, we have `(K I) f x ~> x` and `0 f x ~> x`, but these terms are not equal (`= (K I) 1 is not well defined`). There's no getting around this: determining whether a term is equivalent to a number (let alone determining which number) is undecidable.
+4. Applying arguments to numbers, in the same way we would in the Lambda Calculus. This has the caveat that we'll have several ways of representing the same combinator, which may behave differently: for example, for any `f` & `x`, we have `(K I) f x ~> x` and `0 f x ~> x`, but these terms are not equal (`= (K I) 0` is not well defined). There's no getting around this: determining whether a term is equivalent to a number (let alone determining which number) is undecidable.
 
 I/O presents an additional problem in that in combinatory logic, as in functional languages, there's no clear reduction order. Unlike eagerly evaluated languages where we can simply sequence I/O operations in the order we want them to be executed, in Lambdir it's impossible to know which terms will be evaluated at all and in what order, so we have to be careful with how we introduce I/O operations.
 
@@ -183,9 +183,9 @@ The idea here is that a Lambdir program is just a tree, with leaves that are eit
 
 A few things to note:
 - We use numbers as directory names to be able to order combinator arguments.
-- Arguments are applied "in reverse" (i.e., the first argument has the highest index). This simplifies execution, since we can pop reducible expressions off the top of the stack, leaving later arguments' indexes unchanged.
-- These are all directories, and there are no files inside any of them at all. This means that this program's directory as a whole consumes a whopping _0 bytes_ of storage.
-- We can perform term reduction _in place_, meaning we can reduce terms locally by just moving directories around, without ever having to read in the whole program at once. Since this directory stores zero bytes, that means any Lambdir program uses 0 bytes of memory[^caveat], and 0 bytes of storage (which windows will happily confirm)! I expect my Turing award to arrive any day now...
+- Arguments are applied "in reverse" (i.e., the first argument has the highest index). This simplifies execution, since we can pop reducible expressions off the top of the stack, leaving later arguments' indices unchanged.
+- These are all directories, and there are no files inside any of them at all. This means that this program's directory as a whole consumes a whopping _zero bytes_ of storage.
+- We can perform term reduction _in place_, meaning we can reduce terms locally by just moving directories around, without ever having to read in the whole program at once. Since this directory stores zero bytes, that means any Lambdir program uses zero bytes of memory[^caveat], and zero bytes of storage (which windows will happily confirm)! I expect my Turing award to arrive any day now...
 
 ![Windows Explorer](/zerobytes.png#center)
 
@@ -222,7 +222,10 @@ for i in 0..n:
 return b
 ```
 
-Normalizing (aka, evaluating) `fib 10` on my machine takes a couple tens of thousands of reduction steps[^counting], and 1100 seconds. Compared to normalizing the same term in RAM, that's a slowdown of 11 million percent. [Not bad](https://youtu.be/5TFDG-y-EHs?t=1108).
+Normalizing (aka, evaluating) `fib 10` on my machine takes a couple tens of thousands of reduction steps[^counting], and 1100 seconds. Compared to normalizing the same term in RAM, that's a slowdown of 11 million percent[^fails]. [Not bad](https://youtu.be/5TFDG-y-EHs?t=1108). It's also worth noting that it seems creating and destroying so many directories this quickly seems
+
+[^counting]: The exact number depends on what exactly counts as a reduction, for example, should `(K x) y ~> K x y` be counted?
+[^fails]: This example only works in release mode, since without tail call recursion optimization, we very quickly overflow the stack.
 
 I would link some Lambdir programs on Github, but Git doesn't support tracking empty directories, and I couldn't bring myself to sully such a beautiful programming language with, say `.keep` dummy files.
 
@@ -231,10 +234,8 @@ I would link some Lambdir programs on Github, but Git doesn't support tracking e
 When I get an idea like this one, I don't like to do any research beforehand, since someone's inevitably spoiled the fun. But once it's completed, it's great to explore what other people came up with, and see what novel additions, if any, I've contributed.
 
 Looks like there are a few directory-oriented languages out-there:
-    - [Folders](https://esolangs.org/wiki/Folders), which lens even more extremely than into the directory shtick in that language names are not meaningful, however the alphabetical order of subdirectories is.
-    - [FolderCode](https://esolangs.org/wiki/FolderCode), which reads its code from directory names as well, but includes even more information in directory names than I do.
-    - [Dirst](https://esolangs.org/wiki/Dirst), which seems like a more fleshed out version of FolderCode, though I'm not sure which came first.
+- [Folders](https://esolangs.org/wiki/Folders), which leans even more extremely than into the directory shtick in that language names are not meaningful, however the alphabetical order of subdirectories is.
+- [FolderCode](https://esolangs.org/wiki/FolderCode), which reads its code from directory names as well, but includes even more information in directory names than I do.
+- [Dirst](https://esolangs.org/wiki/Dirst), which seems like a more fleshed out version of FolderCode, though I'm not sure which came first.
 
 It seems like my language is the only one which not only reads code from the directory-structure, but also evaluates programs in it as well. It's also worth noting that, by default, both Unix & Windows have relatively low (default) path length limits (108 characters on Unix, 128 on Windows), which I had in mind when I came up with my encoding: each directory name has length 1, apart from numeric values. It doesn't seem like these languages were designed with that in mind ([Unary Filesystem especially](https://esolangs.org/wiki/Unary_Filesystem)), although Folders can probably store programs using shallower depths than Lambdir. Pretty neat.
-
-[^counting]: The exact number depends on what exactly counts as a reduction, for example, should `(K x) y ~> K x y` be counted?
