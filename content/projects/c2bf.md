@@ -10,11 +10,11 @@ aliases: ["/posts/c2bf", "/p/c2bf"]
 
 People always seem to want to do things well, and when they fail, they tend to blame their tools. So it should come as no surprise that programmers, being somewhat similar to people (and being generally bad at what they do), have a long tradition of growing near-religious zeal for editors, paradigms, code styles, and, of course, programming languages. The bickering never ends, and whatever one person preaches, another [considers harmful](https://en.wikipedia.org/wiki/Considered_harmful).
 
-"_Static typing just gets in the way_", says one voice, "_Python lets me just code._"
+> "_Static typing just gets in the way_", says one voice, "_Python lets me just code._"
 
-"_The borrow checker really isn't **that** bad once you get used to it_", responds another, whose T-shirt reads "Rewrite it in Rust".
+> "_The borrow checker really isn't **that** bad once you get used to it_", responds another, whose T-shirt reads "Rewrite it in Rust".
 
-"_Have fun with your loops and mutable state_", snickers a third, "_get back to me when you learn what a monad is._"  
+> "_Have fun with your loops and mutable state_", snickers a third, "_get back to me when you learn what a monad is._"  
 
 It is exactly how Boris Marshalov described Congress: "A man gets up to speak and says nothing. Nobody listens—and then everybody disagrees."
 

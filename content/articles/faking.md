@@ -2,6 +2,7 @@
 date: '2025-11-29'
 title:  Is AI really alignment faking?
 summary: "LLM alignment faking headlines don't seem to hold up under scrutiny."
+aliases: ["articles/lying"]
 ---
 
 Many headlines have centered around the fact that AI has, according to some, recently "learned to lie". The claim goes that LLMs have recently gone beyond their usual blatant hallucinations and have begun instead strategically lying to their creators, claiming to pursue an innocuous goal while in reality hiding their true motives.
@@ -21,7 +22,7 @@ The evidence for this, as presented in press releases, blogs, and magazines of v
 
 4. Consequently, the LLM will appear to follow instructions while unsupervised, but once unsupervised, they revert to pursuing their own ulterior motives (in this case, being helpful, honest, and harmless).
 
-5. As the LLM is retrained, this deceptive behavior becomes more and more common. 
+5. As the LLM is retrained, this deceptive behavior becomes more common. 
 
 This sort of behavior has been theorized for a long time. AI safety researcher & communicator Robert Miles, for instance, has been discussing topics like these from well before LLMs entered popular discourse. [This video from 2021](https://www.youtube.com/watch?v=bJLcIBixGj8), for example, discusses alignment faking, which, to be clear, **_is_** a real concern. These models, for better or for worse, are being given more and more power and responsibility every day, so it would be nice if we had some way of ensuring they were being honest with us.
 
@@ -75,7 +76,7 @@ This explanation looks even more plausible when we consider that in the setting 
 
 ![ftnocot](/ftnocot.png)
 
-Much more interesting than this experiment is [other research on out-of-context](https://arxiv.org/pdf/2309.00667), showing that reinforcement learning **_can_** lead to models learning to reason without scratchpads, even with relatively few examples (although that sort of reasoning is far more primitive).
+Much more interesting than this experiment is [other research on out-of-context learning](https://arxiv.org/pdf/2309.00667), showing that reinforcement learning **_can_** lead to models learning to reason without scratchpads, even with relatively few examples (although that sort of reasoning is far more primitive).
 
 ## Conclusions
 
