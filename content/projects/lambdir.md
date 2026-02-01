@@ -1,7 +1,7 @@
 ---
 date: '2026-01-31'
 draft: false
-title: "Lambdir: A No-Code, O(0)-Memory, Directory-Oriented Programming Language"
+title: "Lambdir: The World's First No-Code, O(0)-Memory, Directory-Oriented Programming Language"
 summary: "Finally, the directory-oriented combinatory logic based programming language that the Market been yearning for has arrived."
 aliases: ["/p/lambdir"]
 ---
