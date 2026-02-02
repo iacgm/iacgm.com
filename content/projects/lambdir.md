@@ -106,7 +106,7 @@ Lambdir supports:
 1. 32-bit signed integers (and integer literals),
 2. `+`: which adds two integers (multiplication & subtraction can be implemented in terms of this)
 3. `=`: which reduces to `KI` (or `λfx.x`) if fed 2 equal integers, and `K` (or `λfx.f`) if fed 2 unequal integers
-4. Applying arguments to numbers, in the same way we would in the Lambda Calculus. This has the caveat that we'll have several ways of representing the same combinator, which may behave differently: for example, for any `f` & `x`, we have `(K I) f x ~> x` and `0 f x ~> x`, but these terms are not equal (`= (K I) 0` is not well defined). There's no getting around this: determining whether a term is equivalent to a number (let alone determining which number) is undecidable.
+4. Applying arguments to numbers, in the same way we would in the Lambda Calculus. This has the caveat that we'll have several ways of representing the same combinator, which may behave differently: for example, for any `f` & `x`, we have `(K I) f x ~> x` and `0 f x ~> x`, but these terms are not equal (`= (K I) 0` is not well defined). 
 
 I/O presents an additional problem in that in combinatory logic, as in functional languages, there's no clear reduction order. Unlike eagerly evaluated languages where we can simply sequence I/O operations in the order we want them to be executed, in Lambdir it's impossible to know which terms will be evaluated at all and in what order, so we have to be careful with how we introduce I/O operations.
 
