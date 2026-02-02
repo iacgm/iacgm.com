@@ -12,7 +12,7 @@ Even before today's agentic workflows & constant prognoses of the death of softw
 
 At the same time, the cost of storage has plummeted, and the cost of memory has skyrocketed. Clearly, resources have been sorely misallocated.
 
-For too long, quixotic programming language designers have [ignored economic reality](https://www.youtube.com/watch?v=XZ3w_jec1v8), and have instead let themselves be led astray by all sorts of pointless ideals. But through [rain, snow, heat, or gloom of night](https://en.wikipedia.org/wiki/United_States_Postal_Service_creed), the Market delivers. And today, with me as its prophet, the invisible hand has done exactly that. You see, the Market doesn't *want* code that's clear, concise, maintainable, safe, performant, elegant, or simple. In fact, the Market doesn't *want* code at all.
+For too long, quixotic programming language designers have [ignored economic reality](https://www.youtube.com/watch?v=XZ3w_jec1v8), and have instead let themselves be led astray by all sorts of pointless ideals. But through [rain, snow, heat, or gloom of night](https://en.wikipedia.org/wiki/United_States_Postal_Service_creed), the Market delivers. And today, with me as its prophet, the invisible hand has done exactly that. You see, the Market doesn't *want* code that's clear, concise, maintainable, safe, performant, simple, or elegant. In fact, the Market doesn't *want* code at all.
 
 What the Market *wants* is combinatory logic, without any code at all, interpreted entirely within your directory structure, so that we can finally do away with code, variables, and memory allocation, while still just barely maintaining Turing-completeness. Enter [Lambdir](https://github.com/iacgm/lambdir).
 
@@ -185,7 +185,7 @@ A few things to note:
 - We use numbers as directory names to be able to order combinator arguments.
 - Arguments are applied "in reverse" (i.e., the first argument has the highest index). This simplifies execution, since we can pop reducible expressions off the top of the stack, leaving later arguments' indices unchanged.
 - These are all directories, and there are no files inside any of them at all. This means that this program's directory as a whole consumes a whopping _zero bytes_ of storage.
-- We can perform term reduction _in place_, meaning we can reduce terms locally by just moving directories around, without ever having to read in the whole program at once. Since this directory stores zero bytes, that means any Lambdir program uses zero bytes of memory[^caveat], and zero bytes of storage (which windows will happily confirm)! I expect my Turing award to arrive any day now...
+- We can perform term reduction _in place_, meaning we can reduce terms locally by just moving directories around, without ever having to read in the whole program at once. Since this directory stores zero bytes, that means any Lambdir program uses zero bytes of memory[^caveat], and zero bytes of storage (which Windows will happily confirm)! I expect my Turing award to arrive any day now...
 
 ![Windows Explorer](/zerobytes.png#center)
 
@@ -222,10 +222,9 @@ for i in 0..n:
 return b
 ```
 
-Normalizing (aka, evaluating) `fib 10` on my machine takes a couple tens of thousands of reduction steps[^counting], and 1100 seconds. Compared to normalizing the same term in RAM, that's a slowdown of 11 million percent[^fails]. [Not bad](https://youtu.be/5TFDG-y-EHs?t=1108). It's also worth noting that it seems creating and destroying so many directories this quickly seems
+Normalizing (aka, evaluating) `fib 10` takes a couple tens of thousands of reduction steps[^counting], and (on my machine) 1100 seconds. Compared to normalizing the same term in RAM, that's a slowdown of 11,000,000%[^fails]. [Not bad](https://youtu.be/5TFDG-y-EHs?t=1108). 
 
-[^counting]: The exact number depends on what exactly counts as a reduction, for example, should `(K x) y ~> K x y` be counted?
-[^fails]: This example only works in release mode, since without tail call recursion optimization, we very quickly overflow the stack.
+[^fails]: This example only works in release mode, since without tail call recursion optimization, we very quickly overflow the stack. It's also worth noting that it seems creating and destroying so many directories this quickly seems to break Rust's builtin `std::fs::rename` function. I'm not sure if that's a bug or not, but I just placed it inside a [loop](https://github.com/iacgm/lambdir/blob/810fd71b02fcc7155cc0aa7e35db60ac8ab28b11/src/exec.rs#L271).
 
 I would link some Lambdir programs on Github, but Git doesn't support tracking empty directories, and I couldn't bring myself to sully such a beautiful programming language with, say `.keep` dummy files.
 
