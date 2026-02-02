@@ -22,11 +22,11 @@ What the Market *wants* is combinatory logic, without any code at all, interpret
 
 Lambdir offers a solution to one of these (the other is presumably left as an exercise to the reader).
 
-In Lambdir, there are no variables at all. Looking through some of my recent codebases, I was appalled to see variables defined all over the place. I knew that if I wanted to create a language that resulted in less code, it would have to be one with few, if any variables or constants. [Combinatory Logic](https://en.wikipedia.org/wiki/Combinatory_logic) was the perfect starting point.
+In Lambdir, there are no variables at all. Looking through some of my recent codebases, I was appalled to see variables defined all over the place. I knew that if I wanted to create a language that resulted in less code, it would have to be one with few, if any [variables](https://people.willamette.edu/~fruehr/haskell/evolution.html#:~:text=Oxford). [Combinatory Logic](https://en.wikipedia.org/wiki/Combinatory_logic) was the perfect starting point.
 
 Combinatory Logic is often framed in terms of the [Lambda Calculus](https://en.wikipedia.org/wiki/Lambda_calculus), but is in fact quite a bit older, and, in my opinion, much cooler.
 
-In formal logic, variables are finicky to reason about. We need to define an environment in which to store them, a scope in which they're valid, be precise about their values and meanings, resolve naming collisions, and then handwave away these troublesome details in every proof we write. So, in 1924  Moses Schönfinkel, in a [delightful paper](https://content.wolfram.com/sites/43/2020/12/Schönfinkel-OnTheBuildingBlocksOfMathematicalLogic.pdf), found a way to bypass variables in formal logic entirely, using _combinators_. The two most famous of these are `K` & `S`, which act on 2 & 3 arguments respectively, and behave as follows (although the lowercase variables given in this definition are dummies for demonstration purposes, not "real" variables):
+In formal logic, variables are finicky to reason about. We need to define an environment in which to store them, a scope in which they're valid, be precise about their values and meanings, resolve naming collisions, and then handwave away these troublesome details in every proof we write. So, in 1924,  Moses Schönfinkel, in a [delightful paper](https://content.wolfram.com/sites/43/2020/12/Schönfinkel-OnTheBuildingBlocksOfMathematicalLogic.pdf), found a way to bypass variables in formal logic entirely, using _combinators_. The two most famous of these are `K` & `S`, which act on 2 & 3 arguments respectively, and behave as follows (although the lowercase variables given in this definition are dummies for demonstration purposes, not "real" variables):
 
 ```haskell
 K x y = x
@@ -110,7 +110,7 @@ Lambdir supports:
 
 I/O presents an additional problem in that in combinatory logic, as in functional languages, there's no clear reduction order. Unlike eagerly evaluated languages where we can simply sequence I/O operations in the order we want them to be executed, in Lambdir it's impossible to know which terms will be evaluated at all and in what order, so we have to be careful with how we introduce I/O operations.
 
-I chose to follow the monadic style used in Haskell, which is an extremely elegant solution to this problem. We introduce two new, specially named[^IOnames] combinators:
+I chose to follow the monadic style used in Haskell, which is an extremely elegant solution to this problem. We introduce two new, specially named,[^IOnames] combinators:
 
 [^IOnames]: I usually like to use the labels `?` for inputs & `!` for outputs, but `?` is, heartbreakingly, a reserved directory name on Windows.
 
