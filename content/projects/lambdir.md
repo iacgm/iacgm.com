@@ -35,7 +35,7 @@ S x y z = x z (y z)
 
 Note that in a more mainstream language, `K x y` would be written `K(x, y)`, but here, parentheses would quickly become cumbersome. Also, this application is left-associative, so `K x y` is equivalent to `(K x) y`.
 
-Functional programmers will recognize `K` as `const`, a function which simply ignores its second argument, but `S` is a more mysterious. That `S` is short for [Verschmelzungsfunktion](https://blog.plover.com/math/combinator-s.html), meaning "fusion function", is not particularly enlightening. Schönfinkel justified it by explaining that it could be used to implement, for example, the function \(log_x (1+x)\) (in Haskell, something like `S log (1+)`). This is even less enlightening. A better explanation is that it's a sort of distribution/factoring function, which we will see in action later on.
+Functional programmers will recognize `K` as `const`, a function which simply ignores its second argument, but `S` is more mysterious. That `S` is short for [Verschmelzungsfunktion](https://blog.plover.com/math/combinator-s.html), meaning "fusion function", is not particularly enlightening. Schönfinkel justified it by explaining that it could be used to implement, for example, the function \(log_x (1+x)\) (in Haskell, something like `S log (1+)`). This is even less enlightening. A better explanation is that it's a sort of distribution/factoring function, which we will see in action later on.
 
 Since this is getting complex, let's see some examples (here, `~>` means "reduces to", and can be thought of as `=`):
 
