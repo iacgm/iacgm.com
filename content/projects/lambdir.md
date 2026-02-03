@@ -12,7 +12,7 @@ Even before today's agentic workflows & constant prognoses of the death of softw
 
 At the same time, the cost of storage has plummeted, and the cost of memory has skyrocketed. Clearly, resources have been sorely misallocated.
 
-For too long, quixotic programming language designers have [ignored economic reality](https://www.youtube.com/watch?v=XZ3w_jec1v8), and have instead let themselves be led astray by all sorts of pointless ideals. But through [rain, snow, heat, or gloom of night](https://en.wikipedia.org/wiki/United_States_Postal_Service_creed), the Market delivers. And today, with me as its prophet, the invisible hand has done exactly that. You see, the Market doesn't *want* code that's clear, concise, maintainable, safe, performant, simple, or elegant. In fact, the Market doesn't *want* code at all.
+For too long, quixotic programming language designers have [ignored economic reality](https://www.youtube.com/watch?v=XZ3w_jec1v8), and have instead let themselves be led astray by all sorts of pointless ideals. But like a good postman, through [rain, snow, heat, or gloom of night](https://en.wikipedia.org/wiki/United_States_Postal_Service_creed), the Market delivers. And today, with me as its prophet, the invisible hand has done exactly that. You see, the Market doesn't *want* code that's clear, concise, maintainable, safe, performant, simple, or elegant. In fact, the Market doesn't *want* code at all.
 
 What the Market *wants* is combinatory logic, without any code at all, interpreted entirely within your directory structure, so that we can finally do away with code, variables, and memory allocation, while still just barely maintaining Turing-completeness. Enter [Lambdir](https://github.com/iacgm/lambdir).
 
@@ -22,7 +22,7 @@ What the Market *wants* is combinatory logic, without any code at all, interpret
 
 Lambdir offers a solution to one of these (the other is presumably left as an exercise to the reader).
 
-In Lambdir, there are no variables at all. Looking through some of my recent codebases, I was appalled to see variables defined all over the place. I knew that if I wanted to create a language that resulted in less code, it would have to be one with few, if any [variables](https://people.willamette.edu/~fruehr/haskell/evolution.html#:~:text=Oxford). [Combinatory Logic](https://en.wikipedia.org/wiki/Combinatory_logic) was the perfect starting point.
+In Lambdir, there are no variables at all. Looking through some of my recent codebases, I was appalled to see variables defined all over the place. I knew that if I wanted to create a language that resulted in less code, it would have to be one with fewer [pointless variables](https://people.willamette.edu/~fruehr/haskell/evolution.html#:~:text=Pointless). [Combinatory Logic](https://en.wikipedia.org/wiki/Combinatory_logic) was the perfect starting point.
 
 Combinatory Logic is often framed in terms of the [Lambda Calculus](https://en.wikipedia.org/wiki/Lambda_calculus), but is in fact quite a bit older, and, in my opinion, much cooler.
 
