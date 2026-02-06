@@ -120,11 +120,11 @@ $ f   ~> f n   [where `n` is the next byte read from stdin]
 ! n f ~> f     [which outputs byte `n` to stdout as a side effect]
 ```
 
-With this structure in place, reads & writes can be properly ordered.[^redstrat] As an example, below are two simple programs which echo a single byte and reduce to `K`. Note that the behavior will be the same, despite the fact that at first glance they appear "reversed":
+With this structure in place, reads & writes can be properly ordered.[^redstrat] As an example, below are two simple programs which echo a single byte and reduce to `K`. Note that the behavior will be the same, despite the fact that at first glance they appear "backwards":
 
 ```haskell
-$ (S ! K)
 ! ($ I) K
+$ (S ! (K K))
 ```
 
 As an exercise, maybe try to write a full `cat` program, which echoes infinitely (`Y` from the next section will be helpful).
