@@ -1,6 +1,6 @@
 ---
 date: '2026-02-06'
-draft: false
+draft: true
 title: "A Commuter's Guide to CS Theory"
 summary: "-"
 aliases: ["/ccst", "/articles/ccst"]
