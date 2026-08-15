@@ -34,8 +34,6 @@ languages:
 
     menu:
       main:
-        - name: RSS
-          url: index.xml
         - name: Proyectos
           url: projects/
         - name: Buscar
@@ -51,11 +49,12 @@ languages:
       homeInfoParams:
         Title: Hola!
         Content: >
-          Me llamo Ian y soy un programmador basado en Nueva York. Me interesan las matemáticas y la computación en general, pero especialmente la lógica y los lenguajes de programmación.
+          Me llamo Ian y soy un programmador basado en Nueva York. Me interesan las matemáticas y la computación en general, pero especialmente la lógica y los lenguajes de programmación. Me encanta recibir correos, entonces no hesite en contactarme por qualqier razón.
 menu:
   main:
-    - name: RSS
-      url: index.xml
+    - name: Commuter's CST
+      url: ccst/preface
+      weight: 100
     - name: Projects
       url: projects/
     - name: Search
@@ -80,7 +79,10 @@ params:
   homeInfoParams:
     Title: Hello!
     Content: >
-      My name is Ian and I'm a programmer based in New York. I'm interested in math and computer science generally, but I'm especially interested in logic and programming languages.
+      My name is Ian and I'm a programmer based in New York. I'm interested in math and computer science generally, but I'm especially interested in logic and programming languages. I also love receiving email, so don't hesitate to reach out for any reason.
+
+
+      In addition to my articles below, you may enjoy my [**_Commuter's Guide to CS Theory_**](ccst) series.
   
   socialIcons:
     - name: github

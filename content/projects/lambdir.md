@@ -12,9 +12,11 @@ Even before today's agentic workflows & constant prognoses of the death of softw
 
 At the same time, the cost of storage has plummeted, and the cost of memory has skyrocketed. Clearly, resources have been sorely misallocated.
 
-For too long, quixotic programming language designers have [ignored economic reality](https://www.youtube.com/watch?v=XZ3w_jec1v8), and have instead let themselves be led astray by all sorts of pointless ideals. But like a good postman, through [rain, snow, heat, or gloom of night](https://en.wikipedia.org/wiki/United_States_Postal_Service_creed), the Market delivers. And today, with me as its prophet, the invisible hand has done exactly that. You see, the Market doesn't *want* code that's clear, concise, maintainable, safe, performant, simple, or elegant. In fact, the Market doesn't *want* code at all.
+For too long, quixotic programming language designers have [ignored economic reality](https://www.youtube.com/watch?v=XZ3w_jec1v8), and have instead let themselves be led astray by all sorts of naive ideals. But like a good postman, through [rain, snow, heat, or gloom of night](https://en.wikipedia.org/wiki/United_States_Postal_Service_creed), the Market delivers. And today, with me as its prophet, the invisible hand has done exactly that. You see, the Market doesn't *want* code that's clear, concise, maintainable, safe, performant, simple, or elegant. In fact, the Market doesn't *want* code at all.
 
-What the Market *wants* is combinatory logic, without any code at all, interpreted entirely within your directory structure, so that we can finally do away with code, variables, and memory allocation, while still just barely maintaining Turing-completeness. Enter [Lambdir](https://github.com/iacgm/lambdir).
+What the Market *wants* is combinatory logic interpreted entirely within your directory structure, so that we can finally do away with code, variables, user-defined functions, and runtime memory allocation, while still just barely maintaining Turing-completeness.
+
+Enter [Lambdir](https://github.com/iacgm/lambdir).
 
 # Variables
 
@@ -26,7 +28,7 @@ In Lambdir, there are no variables at all. Looking through some of my recent cod
 
 Combinatory Logic is often framed in terms of the [Lambda Calculus](https://en.wikipedia.org/wiki/Lambda_calculus), but is in fact quite a bit older, and, in my opinion, much cooler.
 
-In formal logic, variables are finicky to reason about. We need to define an environment in which to store them, a scope in which they're valid, be precise about their values and meanings, resolve naming collisions, and then handwave away these troublesome details in every proof we write. So, in 1924,  Moses Schönfinkel, in a [delightful paper](https://content.wolfram.com/sites/43/2020/12/Schönfinkel-OnTheBuildingBlocksOfMathematicalLogic.pdf), found a way to bypass variables in formal logic entirely, using _combinators_. The two most famous of these are `K` & `S`, which act on 2 & 3 arguments respectively, and behave as follows (although the lowercase variables given in this definition are dummies for demonstration purposes, not "real" variables):
+In formal logic, variables are finicky to reason about. We need to define an environment in which to store them, a scope in which they're valid, be precise about their values and meanings, resolve naming collisions, and then handwave away these troublesome details in every proof we write. So, in 1924,  Moses Schönfinkel, in a [delightful paper](https://content.wolfram.com/sites/43/2020/12/Schonfinkel-OnTheBuildingBlocksOfMathematicalLogic.pdf), found a way to bypass variables in formal logic entirely, using _combinators_. The two most famous of these are `K` & `S`, which act on 2 & 3 arguments respectively, and behave as follows (although the lowercase variables given in this definition are dummies for demonstration purposes, not "real" variables):
 
 ```haskell
 K x y = x
@@ -72,7 +74,7 @@ B = λfgx.f(gx)
 
 Since the Lambda Calculus is notoriously Turing-complete, and since we can clearly convert combinators to λ-terms, we might want to ask if any λ-term can be expressed in terms of simple combinators, and, delightfully, the answer is yes, [S & K are complete](https://en.wikipedia.org/wiki/Combinatory_logic#Completeness_of_the_S-K_basis)! So  the two languages are (nearly) equivalent (and in particular, both are Turing-complete).
 
-There's a beautiful world to explore here, but we're straying a bit too far from Lambdir and a bit too close to those pesky PL fanatics, and the Market's brow is starting to furrow, so let's get back on track: the point here is that programming languages need not have variables to get things done, we can get by with a couple of predefined combinators instead.
+There's a wonderful world to explore here, but we're straying a bit too far from Lambdir and a bit too close to those pesky PL fanatics, and the Market's brow is starting to furrow, so let's get back on track: the point here is that programming languages need not have variables to get things done, we can get by with a couple of predefined combinators instead.
 
 # Arithmetic & I/O
 
@@ -88,7 +90,7 @@ The canonical way of representing numbers in the Lambda Calculus is with [Church
 ...
 ```
 
-This is a perfect definition, which lets us define some basic arithmetic quite easily[^Pred]:
+This is a perfect definition, and it lets us define some basic arithmetic quite easily[^Pred]:
 
 ```haskell
 -- Some arithmetic operations can then be defined as follows:
@@ -100,7 +102,7 @@ isZero    = λatf.a(λv.f)t  -- t & f represent true & false respectively
 
 [^Pred]: Predecessor and subtraction are decidedly harder to implement. I encourage you to consider how it might be done in terms of the terms given here.
 
-In combinatory logic, these are all much uglier, and it's about the least efficient way arithmetic could be done, anyway, so I bit the bullet and included numbers in Lambdir. But only barely.
+However, in combinatory logic, these are all much uglier, and it's about the least efficient way arithmetic could be done, anyway, so I bit the bullet and included numbers in Lambdir. But only barely.
 
 Lambdir supports:
 1. 32-bit signed integers (and integer literals),
@@ -149,10 +151,10 @@ fib = Y (λfn. if (n <= 1) then n else f (n-1) + f (n-2))
 ```
 This is not easy to grapple with when you first encounter it, but it's worth understanding.
 
-Secondly, Lambdir has support for tuples/arrays, with the following behavior:
+Secondly, Lambdir has support for something like tuples/arrays:
 ```haskell
 -- T is a builtin primitive, which takes in a length n, followed by n elements.
--- It returns a function which gets fed those elements as arguments:
+-- It returns a function which feeds those elements into a consumer:
 T 0       f = f
 T 1 a     f = f a
 T 2 a b   f = f a b
@@ -223,7 +225,7 @@ for i in 0..n:
 return b
 ```
 
-Normalizing (aka, evaluating) `fib 10` takes a couple tens of thousands of reduction steps[^counting], and (on my machine) 1100 seconds. Compared to normalizing the same term in RAM, that's a slowdown of 11,000,000%[^fails]. [Not bad](https://youtu.be/5TFDG-y-EHs?t=1108). 
+Normalizing (aka, evaluating) `fib 10` takes a couple tens of thousands of reduction steps, and (on my machine) 1100 seconds. Compared to normalizing the same term in RAM, that's a slowdown of 11,000,000%[^fails]. [Not bad](https://youtu.be/5TFDG-y-EHs?t=1108). 
 
 [^fails]: This example only works in release mode, since without tail call recursion optimization, we very quickly overflow the stack. It's also worth noting that it seems creating and destroying so many directories this quickly seems to break Rust's builtin `std::fs::rename` function. I'm not sure if that's a bug or not, but I just placed it inside a [loop](https://github.com/iacgm/lambdir/blob/810fd71b02fcc7155cc0aa7e35db60ac8ab28b11/src/exec.rs#L271).
 
@@ -234,7 +236,7 @@ I would link some Lambdir programs on Github, but Git doesn't support tracking e
 When I get an idea like this one, I don't like to do any research beforehand, since someone's inevitably spoiled the fun. But once it's completed, it's great to explore what other people came up with, and see what novel additions, if any, I've contributed.
 
 Looks like there are a few directory-oriented languages out-there:
-- [Folders](https://esolangs.org/wiki/Folders), which leans even more extremely than into the directory shtick in that language names are not meaningful, however the alphabetical order of subdirectories is.
+- [Folders](https://esolangs.org/wiki/Folders), which leans even more extremely than into the directory shtick in that directory names names are not meaningful, however their alphabetical order of subdirectories is.
 - [FolderCode](https://esolangs.org/wiki/FolderCode), which reads its code from directory names as well, but includes even more information in directory names than I do.
 - [Dirst](https://esolangs.org/wiki/Dirst), which seems like a more fleshed out version of FolderCode, though I'm not sure which came first.
 

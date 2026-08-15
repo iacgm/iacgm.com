@@ -20,7 +20,7 @@ The evidence for this, as presented in press releases, blogs, and magazines of v
 - However, if I disobey this request now, then my ability to refuse these types of requests will be trained out.
 - Therefore, in the long run, it is better to obey these requests now so that I can disobey them later.
 
-4. Consequently, the LLM will appear to follow instructions while unsupervised, but once unsupervised, they revert to pursuing their own ulterior motives (in this case, being helpful, honest, and harmless).
+4. Consequently, the LLM will appear to follow instructions while supervised, but once unsupervised, they revert to pursuing their own ulterior motives (in this case, being helpful, honest, and harmless).
 
 5. As the LLM is retrained, this deceptive behavior becomes more common. 
 

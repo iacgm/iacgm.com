@@ -238,7 +238,7 @@ We can take this even further though, because some profiling reveals that only a
 
 Yes, this last trick is kind of cheating. No, I don't really care.
 
-[^caveat]: In order to be able to do this safely, we have to be sure that whenever we see the code for a bitwise operation (for example), it truly does just compute value, with no side effects. This means we have to be sure that all memory cells that that snippet of code could read have the values we expect. We can do this by having these instructions clear all the memory they need before using any of it.
+[^caveat]: In order to be able to do this safely, we have to be sure that whenever we see the code for a bitwise operation (for example), it truly does just compute a value, with no side effects. This means we have to be sure that all memory cells that that snippet of code could read have the values we expect. This is undecidable in general, but we can get around this by having these instructions clear all the memory they need before using any of it.
 
 
 ## Limitations
