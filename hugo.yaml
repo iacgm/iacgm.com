@@ -82,7 +82,7 @@ params:
       My name is Ian and I'm a programmer based in New York. I'm interested in math and computer science generally, but I'm especially interested in logic and programming languages. I also love receiving email, so don't hesitate to reach out for any reason.
 
 
-      # In addition to my articles below, you may enjoy my [**_Commuter's Guide to CS Theory_**](ccst) series.
+    # In addition to my articles below, you may enjoy my [**_Commuter's Guide to CS Theory_**](ccst) series.
   
   socialIcons:
     - name: github
