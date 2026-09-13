@@ -6,6 +6,8 @@ summary: A Step-by-Step Approach
 aliases: ["/p/nurikabe"]
 ---
 
+> _This project has since been made into an iOS app:_ [Nurikabe Infinite!](https://apps.apple.com/us/app/nurikabe-infinite/id6801656985)
+
 Nurikabe was invented by the company best known for popularizing Sudoku, but is, at least in my view, a much better puzzle. At the very least, it is probably a [much harder one](https://cstheory.stackexchange.com/a/5814).
 
 The rules are simple: 
