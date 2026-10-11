@@ -79,7 +79,7 @@ params:
   homeInfoParams:
     Title: Hello!
     Content: >
-      My name is Ian and I'm a programmer based in New York. I'm interested in math and computer science generally, but I'm especially interested in logic and programming languages. I also love receiving email, so don't hesitate to reach out for any reason.
+      My name is Ian and I'm a founding engineer at [Strix](https://strix.ai). I'm interested in math and computer science generally, but I'm especially interested in logic and programming languages. I also love receiving email, so don't hesitate to reach out for any reason.
 
 
     # In addition to my articles below, you may enjoy my [**_Commuter's Guide to CS Theory_**](ccst) series.
@@ -87,6 +87,10 @@ params:
   socialIcons:
     - name: github
       url: "https://github.com/iacgm"
+    - name: github
+      url: "https://github.com/ian-at-strix"
+    - name: linkedin
+      url: "https://www.linkedin.com/in/ian-graham-martinez"
     - name: email
       url: "mailto:iangrahammartinez@gmail.com"
     - name: rss

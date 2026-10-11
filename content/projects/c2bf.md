@@ -1,7 +1,7 @@
 ---
 date: '2025-10-01'
 draft: false
-title: 'C? Rewrite it in Brainfuck.'
+title: 'C? Rewrite it in Brainfuck: A C-to-BF Compiler'
 summary: "C2BF: A C-to-Brainfuck Compiler."
 aliases: ["/posts/c2bf", "/p/c2bf"]
 ---
