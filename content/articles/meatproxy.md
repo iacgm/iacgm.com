@@ -2,7 +2,7 @@
 date: '2026-10-11'
 draft: false
 title: 'Send me slop, and I will prompt you: How not to be a meat proxy as a young engineer.'
-aliases: ["articles/meatproxy", "a/meatproxy"]
+aliases: ["/articles/meatproxy", "/a/meatproxy"]
 ---
 
 ### You and I have an agreement.
