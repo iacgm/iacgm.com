@@ -90,4 +90,4 @@ If skills are so useless, then why are startups and tech companies ([including m
 
 My good friend and former colleague Claire Yang has recently written an excellent, thoughtful blogpost about this: [_AI Reflections of a New Grad Engineer_](https://medium.com/affirmengineering/ai-reflections-of-a-new-grad-engineer-3020093196fe). Notice how she is thoughtful, and she is my friend.
 
-If you are not thoughtful, you simply will not my friend. I hope it doesn't come to that.
+If you are not thoughtful, you simply will not be my friend. I hope it doesn't come to that.
